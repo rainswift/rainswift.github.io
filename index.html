@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>雨中燕</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前端技术">
+<meta name="keywords" content="前端技术">
+<meta property="og:type" content="website">
+<meta property="og:title" content="雨中燕">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="雨中燕">
+<meta property="og:description" content="前端技术">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="雨中燕">
+<meta name="twitter:description" content="前端技术">
+  
+    <link rel="alternate" href="/atom.xml" title="雨中燕" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">雨中燕</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">如果有一天我的理想被风雨淋湿，你是否愿意扶我一把，如果有一天我无力前行，你是否愿意陪我一个温暖的午后</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-错乱排序" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/11/错乱排序/" class="article-date">
+  <time datetime="2019-07-11T01:39:14.000Z" itemprop="datePublished">2019-07-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/11/错乱排序/">错乱排序</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="错乱排序（仿慕课网）"><a href="#错乱排序（仿慕课网）" class="headerlink" title="错乱排序（仿慕课网）"></a>错乱排序（仿慕课网）</h2><h4 id="JS代码"><a href="#JS代码" class="headerlink" title="JS代码"></a>JS代码</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">domSort</span>(<span class="params">dom</span>) </span>&#123;</span><br><span class="line">	<span class="comment">// 先计算可以排多少列</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> domW = $(<span class="string">".js-wonderful-list .item"</span>).outerWidth(), w = dom.width(), num = <span class="built_in">parseInt</span>(w / domW), g = [], i = <span class="number">0</span>; num &gt;i; i++) &#123;</span><br><span class="line">		g.push(<span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// </span></span><br><span class="line">	$(<span class="string">".js-wonderful-list .item"</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="comment">// 循环数组找到最大值序列index</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">var</span> vm = $(<span class="keyword">this</span>), index = <span class="number">0</span>, h = g[<span class="number">0</span>], n = <span class="number">0</span>; n &lt; g.length; n++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(g[n] &lt; h)&#123;</span><br><span class="line">				h = g[n], index = n</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		vm.css(&#123;</span><br><span class="line">			left:index * vm.outerWidth(!<span class="number">0</span>),</span><br><span class="line">			top: h</span><br><span class="line">		&#125;),</span><br><span class="line">		<span class="comment">// 更变数组里的最大值</span></span><br><span class="line">		g[index] = h + vm.outerHeight(!<span class="number">0</span>)</span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="comment">// 排序数组,附值最大值给最外层dom</span></span><br><span class="line">	<span class="keyword">var</span> j = <span class="number">0</span>;</span><br><span class="line">	g = g.sort(<span class="function"><span class="keyword">function</span>(<span class="params">a, c</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> a - c</span><br><span class="line">	&#125;),</span><br><span class="line">	j = g[g.length - <span class="number">1</span>]</span><br><span class="line">	dom.height(j)</span><br><span class="line">	<span class="built_in">console</span>.log(g)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">domSort($(<span class="string">".js-wonderful-list"</span>))</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/11/错乱排序/" data-id="cjxyquy9s0001octm1isc105e" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-项目汇总" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/09/项目汇总/" class="article-date">
+  <time datetime="2019-07-09T04:28:46.000Z" itemprop="datePublished">2019-07-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/09/项目汇总/">&#39;项目汇总&#39;</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="政企网站制作"><a href="#政企网站制作" class="headerlink" title="政企网站制作"></a>政企网站制作</h4><p>南宁经济技术开发区：<a href="http://jkq.nanning.gov.cn/" target="_blank" rel="noopener">http://jkq.nanning.gov.cn/</a><br>国悦九曲湾：<a href="http://jqwwq2019.gotoip3.com/" target="_blank" rel="noopener">http://jqwwq2019.gotoip3.com/</a><br>广西九三学社：<a href="http://www.gx93.gov.cn/" target="_blank" rel="noopener">http://www.gx93.gov.cn/</a><br>中国大唐集团有限公司广西分公司：<a href="http://www.cdt-gxi.com/" target="_blank" rel="noopener">http://www.cdt-gxi.com/</a><br>益江环保：<a href="http://www.gxyjhb.com/" target="_blank" rel="noopener">http://www.gxyjhb.com/</a><br>众益集团：<a href="http://www.zzycpa.com/" target="_blank" rel="noopener">http://www.zzycpa.com/</a><br>飞跃体育：<a href="http://www.gxfyty.com/" target="_blank" rel="noopener">http://www.gxfyty.com/</a><br>国悦集团：<a href="http://www.nngy.com.cn/" target="_blank" rel="noopener">http://www.nngy.com.cn/</a><br>智迪尔清算服务：<a href="http://www.zdeqs.com/" target="_blank" rel="noopener">http://www.zdeqs.com/</a></p>
+<h4 id="小程序"><a href="#小程序" class="headerlink" title="小程序"></a>小程序</h4><p>广西中国旅行社<br><img src="http://www.ctsgx.com/images/xiaochengxu.png" alt="广西中国旅行社" title="ll"><br>配配兔<br><img src="http://m.peipeitu.com/Resource/Main/img/xcx_ewm.jpg" alt="配配兔" title="配配兔"></p>
+<h4 id="管理系统（内部系统不对外开放）"><a href="#管理系统（内部系统不对外开放）" class="headerlink" title="管理系统（内部系统不对外开放）"></a>管理系统（内部系统不对外开放）</h4><p>广西中国旅行社：<br>重庆舒爵车商门店管理系统：<a href="http://www.autosmis.com/index/index-index" target="_blank" rel="noopener">http://www.autosmis.com/index/index-index</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/09/项目汇总/" data-id="cjxyquy9u0002octmlio9bp4x" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-vue" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/08/vue/" class="article-date">
+  <time datetime="2019-07-08T05:50:34.000Z" itemprop="datePublished">2019-07-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/08/vue/">vue</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="数据驱动"><a href="#数据驱动" class="headerlink" title="数据驱动"></a>数据驱动</h3><h4 id="new-Vue"><a href="#new-Vue" class="headerlink" title="new Vue"></a>new Vue</h4><p>检测到如果有 <strong>el</strong> 属性，则调用 <strong>vm.$mount</strong> 方法挂载 <strong>vm(vm = this)</strong>，挂载的目标就是把模板渲染成最终的 DOM，那么接下来我们来分析 Vue 的挂载过程。</p>
+<h4 id="Vue-挂载"><a href="#Vue-挂载" class="headerlink" title="Vue 挂载"></a>Vue 挂载</h4><p>首先缓存了原型上的 <strong>$mount</strong> 方法，再重新定义该方法，它对 <strong>el</strong> 做了限制，<strong>Vue</strong> 不能挂载在 <strong>body、html</strong> 这样的根节点上。如果没有定义 <strong>render</strong> 方法，则会把 <strong>el</strong> 或者 <strong>template</strong> 字符串转换成 <strong>render</strong> 方法</p>
+<h4 id="Virtual-DOM"><a href="#Virtual-DOM" class="headerlink" title="Virtual DOM"></a>Virtual DOM</h4><p>真正的 DOM 元素是非常庞大的，因为浏览器的标准就把 DOM 设计的非常复杂。当我们频繁的去做 DOM 更新，会产生一定的性能问题。而 <strong>Virtual DOM</strong> 就是用一个原生的 JS 对象去描述一个 DOM 节点，所以它比创建一个 DOM 的代价要小很多,Node 只是用来映射到真实 DOM 的渲染，不需要包含操作 DOM 的方法，因此它是非常轻量和简单的</p>
+<h4 id="createElement"><a href="#createElement" class="headerlink" title="createElement"></a>createElement</h4><p>Vue.js 利用 <strong>createElement</strong> 方法创建 VNode,<strong>createElement</strong> 函数的流程略微有点多，我们接下来主要分析 2 个重点的流程 —— <strong>children</strong> 的规范化以及 <strong>VNode</strong> 的创建。</p>
+<ul>
+<li><p>children 的规范化<br> <strong>simpleNormalizeChildren</strong> 方法调用场景是 render 函数是编译生成的。理论上编译生成的 children 都已经是 VNode 类型的，但这里有一个例外，就是 <strong>functional component</strong> 函数式组件返回的是一个数组而不是一个根节点，所以会通过 <strong>Array.prototype.concat</strong> 方法把整个 children 数组打平，让它的深度只有一层。</p>
+<p> <strong>normalizeChildren</strong> 方法的调用场景有 2 种，一个场景是 render 函数是用户手写的，当 children 只有一个节点的时候，Vue.js 从接口层面允许用户把 children 写成基础类型用来创建单个简单的文本节点，这种情况会调用 createTextVNode 创建一个文本节点的 VNode；另一个场景是当编译 slot、v-for 的时候会产生嵌套数组的情况，会调用 <strong>normalizeArrayChildren</strong> 方法</p>
+<p> 经过对 children 的规范化，children 变成了一个类型为 VNode 的 Array</p>
+</li>
+</ul>
+<p>回到  <strong>createElement</strong> 函数，规范化 children 后，接下来会去创建一个 VNode 的实例</p>
+<h4 id="update"><a href="#update" class="headerlink" title="update"></a>update</h4><p>Vue 的 <strong>_update</strong> 是实例的一个私有方法，它被调用的时机有 2 个，一个是首次渲染，一个是数据更新的时候,<strong>_update</strong> 方法的作用是把 VNode 渲染成真实的 DOM</p>
+<p><strong>_update</strong> 的核心就是调用 vm.<strong>patch</strong> 方法，这个方法实际上在不同的平台，比如 web 和 weex 上的定义是不一样的<br>初始化 Vue 到最终渲染的整个过程<br>!(‘<a href="https://ustbhuangyi.github.io/vue-analysis/assets/new-vue.png&#39;&#39;流程图&#39;" target="_blank" rel="noopener">https://ustbhuangyi.github.io/vue-analysis/assets/new-vue.png&#39;&#39;流程图&#39;</a>)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/08/vue/" data-id="cjxyquy9m0000octmrlljwj3h" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/07/11/错乱排序/">错乱排序</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/09/项目汇总/">&#39;项目汇总&#39;</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/08/vue/">vue</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 rainswift<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

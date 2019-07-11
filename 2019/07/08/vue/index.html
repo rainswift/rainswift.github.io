@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>vue | 雨中燕</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="数据驱动new Vue检测到如果有 el 属性，则调用 vm.$mount 方法挂载 vm(vm = this)，挂载的目标就是把模板渲染成最终的 DOM，那么接下来我们来分析 Vue 的挂载过程。 Vue 挂载首先缓存了原型上的 $mount 方法，再重新定义该方法，它对 el 做了限制，Vue 不能挂载在 body、html 这样的根节点上。如果没有定义 render 方法，则会把 el 或者">
+<meta name="keywords" content="前端技术">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue">
+<meta property="og:url" content="http://yoursite.com/2019/07/08/vue/index.html">
+<meta property="og:site_name" content="雨中燕">
+<meta property="og:description" content="数据驱动new Vue检测到如果有 el 属性，则调用 vm.$mount 方法挂载 vm(vm = this)，挂载的目标就是把模板渲染成最终的 DOM，那么接下来我们来分析 Vue 的挂载过程。 Vue 挂载首先缓存了原型上的 $mount 方法，再重新定义该方法，它对 el 做了限制，Vue 不能挂载在 body、html 这样的根节点上。如果没有定义 render 方法，则会把 el 或者">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-07-08T07:18:50.798Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue">
+<meta name="twitter:description" content="数据驱动new Vue检测到如果有 el 属性，则调用 vm.$mount 方法挂载 vm(vm = this)，挂载的目标就是把模板渲染成最终的 DOM，那么接下来我们来分析 Vue 的挂载过程。 Vue 挂载首先缓存了原型上的 $mount 方法，再重新定义该方法，它对 el 做了限制，Vue 不能挂载在 body、html 这样的根节点上。如果没有定义 render 方法，则会把 el 或者">
+  
+    <link rel="alternate" href="/atom.xml" title="雨中燕" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">雨中燕</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">如果有一天我的理想被风雨淋湿，你是否愿意扶我一把，如果有一天我无力前行，你是否愿意陪我一个温暖的午后</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-vue" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/08/vue/" class="article-date">
+  <time datetime="2019-07-08T05:50:34.000Z" itemprop="datePublished">2019-07-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      vue
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="数据驱动"><a href="#数据驱动" class="headerlink" title="数据驱动"></a>数据驱动</h3><h4 id="new-Vue"><a href="#new-Vue" class="headerlink" title="new Vue"></a>new Vue</h4><p>检测到如果有 <strong>el</strong> 属性，则调用 <strong>vm.$mount</strong> 方法挂载 <strong>vm(vm = this)</strong>，挂载的目标就是把模板渲染成最终的 DOM，那么接下来我们来分析 Vue 的挂载过程。</p>
+<h4 id="Vue-挂载"><a href="#Vue-挂载" class="headerlink" title="Vue 挂载"></a>Vue 挂载</h4><p>首先缓存了原型上的 <strong>$mount</strong> 方法，再重新定义该方法，它对 <strong>el</strong> 做了限制，<strong>Vue</strong> 不能挂载在 <strong>body、html</strong> 这样的根节点上。如果没有定义 <strong>render</strong> 方法，则会把 <strong>el</strong> 或者 <strong>template</strong> 字符串转换成 <strong>render</strong> 方法</p>
+<h4 id="Virtual-DOM"><a href="#Virtual-DOM" class="headerlink" title="Virtual DOM"></a>Virtual DOM</h4><p>真正的 DOM 元素是非常庞大的，因为浏览器的标准就把 DOM 设计的非常复杂。当我们频繁的去做 DOM 更新，会产生一定的性能问题。而 <strong>Virtual DOM</strong> 就是用一个原生的 JS 对象去描述一个 DOM 节点，所以它比创建一个 DOM 的代价要小很多,Node 只是用来映射到真实 DOM 的渲染，不需要包含操作 DOM 的方法，因此它是非常轻量和简单的</p>
+<h4 id="createElement"><a href="#createElement" class="headerlink" title="createElement"></a>createElement</h4><p>Vue.js 利用 <strong>createElement</strong> 方法创建 VNode,<strong>createElement</strong> 函数的流程略微有点多，我们接下来主要分析 2 个重点的流程 —— <strong>children</strong> 的规范化以及 <strong>VNode</strong> 的创建。</p>
+<ul>
+<li><p>children 的规范化<br> <strong>simpleNormalizeChildren</strong> 方法调用场景是 render 函数是编译生成的。理论上编译生成的 children 都已经是 VNode 类型的，但这里有一个例外，就是 <strong>functional component</strong> 函数式组件返回的是一个数组而不是一个根节点，所以会通过 <strong>Array.prototype.concat</strong> 方法把整个 children 数组打平，让它的深度只有一层。</p>
+<p> <strong>normalizeChildren</strong> 方法的调用场景有 2 种，一个场景是 render 函数是用户手写的，当 children 只有一个节点的时候，Vue.js 从接口层面允许用户把 children 写成基础类型用来创建单个简单的文本节点，这种情况会调用 createTextVNode 创建一个文本节点的 VNode；另一个场景是当编译 slot、v-for 的时候会产生嵌套数组的情况，会调用 <strong>normalizeArrayChildren</strong> 方法</p>
+<p> 经过对 children 的规范化，children 变成了一个类型为 VNode 的 Array</p>
+</li>
+</ul>
+<p>回到  <strong>createElement</strong> 函数，规范化 children 后，接下来会去创建一个 VNode 的实例</p>
+<h4 id="update"><a href="#update" class="headerlink" title="update"></a>update</h4><p>Vue 的 <strong>_update</strong> 是实例的一个私有方法，它被调用的时机有 2 个，一个是首次渲染，一个是数据更新的时候,<strong>_update</strong> 方法的作用是把 VNode 渲染成真实的 DOM</p>
+<p><strong>_update</strong> 的核心就是调用 vm.<strong>patch</strong> 方法，这个方法实际上在不同的平台，比如 web 和 weex 上的定义是不一样的<br>初始化 Vue 到最终渲染的整个过程<br>!(‘<a href="https://ustbhuangyi.github.io/vue-analysis/assets/new-vue.png&#39;&#39;流程图&#39;" target="_blank" rel="noopener">https://ustbhuangyi.github.io/vue-analysis/assets/new-vue.png&#39;&#39;流程图&#39;</a>)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/08/vue/" data-id="cjxyquy9m0000octmrlljwj3h" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/07/09/项目汇总/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          &#39;项目汇总&#39;
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/07/11/错乱排序/">错乱排序</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/09/项目汇总/">&#39;项目汇总&#39;</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/08/vue/">vue</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 rainswift<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
